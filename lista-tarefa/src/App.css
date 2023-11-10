@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap'); 
+body{
+    background: rgb(33, 34, 34);
+    
+}
+h1{
+    font-weight: 900;
+    color: rgb(150, 55, 179);
+    text-align: center;
+}
+form{
+    display: flex;
+    width: 600px;
+    height: 60px;
+    margin: 30px auto;
+    margin-bottom: 60px;
+    position: relative;
+}
+input{
+    display: flex;
+    width: 82%;
+    height: 60px;
+    background: rgba(121, 167, 115, 0);
+    border: none;
+    padding-left: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    border-bottom: 3px solid  rgb(150, 55, 179);
+}
+input:focus{
+    outline: none;
+    border-radius: 3px;
+    border-bottom: 3px solid rgb(118, 66, 177);
+}
+@media  screen and (max-width:900px) {
+    form{
+        width: 100%;
+    }
+    
+}
+button.add{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 10px 25px;
+    height: 65px;
+    border: none;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+    background-color: rgb(150, 55, 179);
+    color: #ccc;
+
+}
+button.add:hover{
+    opacity: 0.7;
+    color: rgb(5, 5, 5);
+
+}
+.listaTarefa{
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    width: 600px;
+    margin: auto;
+
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+  /* border: 1px solid rgb(150, 55, 179);  */
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.item:hover{
+    background: #751b81;
+    opacity: 0.8;
+
+
+}
+.item span{
+    width: 100%;
+    color: white;
+    margin-right: 10px;
+    padding: 10px 15px;
+}
+.item.completo{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background: #565668;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.item.completo span{
+    width: 100%;
+    color: #4d506e;
+    margin-right: 10px;
+    padding: 10px 15px;
+    text-decoration: line-through;
+    opacity: 0.3;
+}
+button.delete{
+    background:  rgb(150, 55, 179);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.8;
+    
+
+
+}
+button.delete:hover{
+    background:  #970f0f;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    color: rgb(19, 18, 18);
+
+}
+@media screen and (max-width:900px) {
+    form{
+        width: 100%;
+    }
+    .listaTarefa{
+        width: 100%;
+
+    }
+    
+}
