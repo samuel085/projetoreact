@@ -1,9 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
   const [lista, setLista] = useState<string[]>([])
   const [novoItem, setNovoItem] = useState('')
+
+  useEffect(() => {
+    const listaSalva = localStorage.getItem('lista')
+    if (listaSalva) {
+      setLista(JSON.parse(listaSalva))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('lista', JSON.stringify(lista))
+  }, [lista])
+
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('lista', JSON.stringify(lista))
+    }
+  }, [lista])
 
   function adicionaItem(e: React.FormEvent) {
     e.preventDefault()
@@ -12,6 +29,11 @@ function App() {
     }
     setLista([...lista, novoItem])
     setNovoItem('')
+  }
+
+  const deletaItem = (index: number) => {
+    const novaLista = lista.filter((_, i) => i !== index)
+    setLista(novaLista)
   }
 
   return (
@@ -37,22 +59,15 @@ function App() {
           lista.map((item, index) => (
             <div className="item" key={index}>
               <span>{item}</span>
-              <button
-                className="delete"
-                onClick={() => {
-                  const novaLista = [...lista]
-                  novaLista.splice(index, 1)
-                  setLista(novaLista)
-                }}
-              >
+              <button className="delete" onClick={() => deletaItem(index)}>
                 delete
               </button>
             </div>
           ))
         ) : (
           <div className="item">
-            {/* <span></span> */}
-            {/* <button className="delete">delete</button> */}
+            {/* <span>m</span>
+            <button className="delete">delete</button> */}
           </div>
         )}
       </div>
